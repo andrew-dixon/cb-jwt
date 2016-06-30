@@ -37,10 +37,10 @@ component output="false" {
 		return segments;
 	}
 
-	function verify( required string token, required string key ) {
+	function verify( required string token, required string key , string algorithm="HmacSHA512" ) {
 		var isValid = true;
 		try {
-			decode( arguments.token, arguments.key );
+			decode( arguments.token, arguments.key , arguments.algorithm );
 		}
 		catch(e) {
 			isValid = false;
