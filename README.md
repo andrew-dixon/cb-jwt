@@ -21,11 +21,3 @@ This could be used within a ColdBox security interceptor to create the JWT (enco
 ```
 property name="jwt" inject="provider:JWTService@jwt";
 ```
-
-and then in your interceptor function you need to add the `get()` function to your method calls, e.g.
-
-```
-jwt.get().encode( payload , key );
-jwt.get().decode( token , key );
-jwt.get().verify( token , key );
-```

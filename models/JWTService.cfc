@@ -1,4 +1,4 @@
-component output="false" {
+component singleton {
 	
 	/* 
 		Available algorithms: 
@@ -8,7 +8,7 @@ component output="false" {
 			* HmacSHA512
 	*/
 
-	function decode ( required string token, required string key , string algorithm = "HmacSHA512" ) {
+	function decode( required string token, required string key , string algorithm = "HmacSHA512" ) {
 	
 		if ( ListLen( arguments.token , "." ) != 3 ) {
 			throw( type="Invalid Token", message="Token should contain 3 segments" );
