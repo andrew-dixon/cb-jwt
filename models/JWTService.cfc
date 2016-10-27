@@ -50,9 +50,9 @@ component singleton {
 	}
 
 	private function _sign( required string msg , required string key , algorithm="HmacSHA512" ) {
-		var key = CreateObject( "java" , "javax.crypto.spec.SecretKeySpec" ).init( arguments.key.getBytes() , arguments.algorithm );
+		var keySpec = CreateObject( "java" , "javax.crypto.spec.SecretKeySpec" ).init( arguments.key.getBytes() , arguments.algorithm );
 		var mac = CreateObject( "java" , "javax.crypto.Mac" ).getInstance( arguments.algorithm );
-		mac.init( key );
+		mac.init( keySpec );
 		return _base64URLEscape( toBase64( mac.doFinal( msg.getBytes() )));
 	}
 
