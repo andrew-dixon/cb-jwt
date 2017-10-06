@@ -42,7 +42,7 @@ component singleton {
 		try {
 			decode( arguments.token, arguments.key , arguments.algorithm );
 		}
-		catch(e) {
+		catch(any e) {
 			isValid = false;
 		}
 
