@@ -2,6 +2,7 @@ component singleton {
 	
 	/* 
 		Available algorithms: 
+
 			* HmacSHA256
 			* HmacSHA384
 			* HmacSHA512
@@ -38,7 +39,7 @@ component singleton {
 		segments = ListAppend( segments , _base64UrlEscape( toBase64( serializeJSON( { "typ" =  "JWT", "alg" = arguments.algorithm } ))) , "." );
 		segments = ListAppend( segments , _base64UrlEscape( toBase64( serializeJSON( arguments.payload ))) , "." );
 		segments = ListAppend( segments , _sign( segments , arguments.key , arguments.algorithm ) , "." );
-		
+
 		return segments;
 	}
 
