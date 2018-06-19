@@ -8,7 +8,13 @@ component singleton {
 			* HmacSHA512
 	*/
 
-	function decode( required string token, required string key , string algorithm = "HmacSHA512" ) {
+	variables.instance.algorithmMap = {
+		"HS256": "HmacSHA256",
+		"HS384": "HmacSHA384",
+		"HS512": "HmacSHA512"
+	};
+
+	function decode( required string token, required string key , string algorithm = "HS512" ) {
 	
 		if ( ListLen( arguments.token , "." ) != 3 ) {
 			throw( type="Invalid Token", message="Token should contain 3 segments" );
@@ -26,7 +32,7 @@ component singleton {
 		return payload;
 	}
 
-	function encode( required struct payload , required string key , string algorithm="HmacSHA512" ) {
+	function encode( required struct payload , required string key , string algorithm="HS512" ) {
 
 		var segments = "";
 
@@ -37,7 +43,7 @@ component singleton {
 		return segments;
 	}
 
-	function verify( required string token, required string key , string algorithm="HmacSHA512" ) {
+	function verify( required string token, required string key , string algorithm="HS512" ) {
 		var isValid = true;
 		try {
 			decode( arguments.token, arguments.key , arguments.algorithm );
@@ -49,9 +55,9 @@ component singleton {
 		return isValid;
 	}
 
-	private function _sign( required string msg , required string key , algorithm="HmacSHA512" ) {
+	private function _sign( required string msg , required string key , string algorithm="HS512" ) {
 		var keySpec = CreateObject( "java" , "javax.crypto.spec.SecretKeySpec" ).init( arguments.key.getBytes() , arguments.algorithm );
-		var mac = CreateObject( "java" , "javax.crypto.Mac" ).getInstance( arguments.algorithm );
+		var mac = CreateObject( "java" , "javax.crypto.Mac" ).getInstance( variables.instance.algorithmMap[arguments.algorithm] );
 		mac.init( keySpec );
 		return _base64URLEscape( toBase64( mac.doFinal( msg.getBytes() )));
 	}
