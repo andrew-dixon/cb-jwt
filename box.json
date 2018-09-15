@@ -6,7 +6,7 @@
     "type":"modules",
     "location":"andrew-dixon/cb-jwt#v1.0.3",
     "devDependencies":{
-        "testbox":"2.3.0+00044"
+        "testbox":"2.8.0+191"
     },
     "installPaths":{
         "testbox":"testbox"
