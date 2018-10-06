@@ -1,10 +1,10 @@
 {
     "name":"ColdBox JSON Web Tokens (JWT)",
-    "version":"1.0.3",
+    "version":"1.1.0",
     "slug":"jwt",
     "private":false,
     "type":"modules",
-    "location":"andrew-dixon/cb-jwt#v1.0.3",
+    "location":"andrew-dixon/cb-jwt#v1.1.0",
     "devDependencies":{
         "testbox":"2.8.0+191"
     },
