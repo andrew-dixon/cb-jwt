@@ -4,7 +4,7 @@
     "slug":"jwt",
     "private":false,
     "type":"modules",
-    "location":"andrew-dixon/cb-jwt#v1.0.1",
+    "location":"andrew-dixon/cb-jwt#v1.1.0",
     "repository":{
         "type":"git",
         "URL":"https://github.com/andrew-dixon/cb-jwt"
